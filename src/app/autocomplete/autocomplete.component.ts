@@ -1,11 +1,17 @@
 import { Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from '@angular/core';
 import { PlaceSearchResult } from '../Models/google.model';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
   selector: 'app-autocomplete',
   standalone: true,
-  imports: [],
-  templateUrl: './autocomplete.component.html',
+  imports: [GoogleMapsModule],
+  template: `
+   <div class="mt-2 p-3 ">
+      <input [placeholder]="placeholder" #inputField matInput
+      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-500 sm:text-sm sm:leading-6" />
+   </div>
+  `,
   styleUrl: './autocomplete.component.css'
 })
 export class AutocompleteComponent {
